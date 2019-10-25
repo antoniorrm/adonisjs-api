@@ -26,7 +26,7 @@ test('it should send an email  with  reset password instructions', async ({ asse
     .post('/forgot')
     .send(forgotPayload)
     .end()
-    console.log(response);
+
   response.assertStatus(204)
 
   const recentEmail = Mail.pullRecent();
