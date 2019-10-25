@@ -13,8 +13,7 @@ test('it should return JWT token when session created', async ({ assert, client}
     email: 'dj@automacao.com',
     password: '123456'
   }
-
-  const user = await Factory
+  await Factory
     .model('App/Models/User')
     .create(sessionPayload);
 
@@ -25,7 +24,7 @@ test('it should return JWT token when session created', async ({ assert, client}
     password: '123456'
     })
     .end()
-    //console.log(response.body);
-    response.assertStatus(200);
-    assert.exists(response.body.token);
+
+  response.assertStatus(200);
+  assert.exists(response.body.token);
 });

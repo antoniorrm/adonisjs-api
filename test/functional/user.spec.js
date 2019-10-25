@@ -4,6 +4,8 @@ const { test, trait } = use('Test/Suite')("User");
 trait('Test/ApiClient')
 
 test('it should return User when User created', async ({ assert, client}) => {
+
+
   const response = await client
     .post('/users')
     .send({
@@ -13,7 +15,6 @@ test('it should return User when User created', async ({ assert, client}) => {
       phone: "9999999991",
     })
     .end()
-    // console.log(response);
-    // response.assertStatus(200);
+
     assert.exists(response.body.email);
 });
