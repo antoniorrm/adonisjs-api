@@ -33,9 +33,12 @@ test('it should send an email  with  reset password instructions', async ({ asse
 
   assert.equal(recentEmail.message.to[0].address, forgotPayload.email)
 
-  // const token = await user.tokens().first();
+  const token = await user.tokens().first();
 
-  // console.log(token);
+  assert.include(token.toJSON(), {
+    user_id: user.id,
+    type: 'forgotpassword',
+  })
 
   Mail.restore()
 });
