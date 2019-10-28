@@ -12,23 +12,19 @@ class SessionController {
    *       - Session
    *     summary: Auth JWT Login
    *     parameters:
-   *       - session: session
+   *       - in:  body
+   *         name: session
    *         description: Email and Password
-   *         in:  body
    *         required: true
-   *         type: string
    *         schema:
-   *           {
-   *               "type": "object",
-   *               "properties": {
-   *                   "email": {
-   *                      "type": "string",
-   *                     }
-   *                }
-   *            }
+   *           $ref: '#/definitions/Auth'
    *     responses:
    *       200:
-   *         description: users
+   *         description: token
+   *       default:
+   *         description: unexpected error
+   *
+   *
    */
   async store({ request, auth }) {
     const { email, password } = request.only([

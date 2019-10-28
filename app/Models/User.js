@@ -12,8 +12,6 @@ const Hash = use('Hash')
 *    User:
 *      type: object
 *      properties:
-*        id:
-*          type: integer
 *        username:
 *          type: string
 *        email:
@@ -24,6 +22,17 @@ const Hash = use('Hash')
 *          type: string
 *      required:
 *        - username
+*        - email
+*        - password
+*
+*    Auth:
+*      type: object
+*      properties:
+*        email:
+*          type: string
+*        password:
+*          type: string
+*      required:
 *        - email
 *        - password
 */
