@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const User = use("App/Models/User")
 
 class SessionController {
   /**
@@ -31,10 +33,13 @@ class SessionController {
       'email',
       'password'
     ]);
-
+    const user = await User.findByOrFail('email', email);
     const { token } = await auth.attempt(email, password);
-
     return { token };
+  }
+
+  async delete({request, auth}) {
+    const user = await auth.logout();
   }
 }
 

@@ -32,6 +32,7 @@ Route.post('/forgot', 'ForgotPasswordController.store');
 
 Route.group(() => {
   Route.get('/users', 'UserController.index');
+  Route.post('/logout', 'SessionController.delete');
 }).middleware('auth');
 
 
